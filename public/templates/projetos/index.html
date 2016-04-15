@@ -67,45 +67,45 @@
             </div>
 
             <div class="form-group">
-                <label for="nome">Descrição</label>
+                <label for="descricao">Descrição</label>
                 <input type="text" ng-minlength="2" required class="form-control" ng-model="projetoCtrl.projeto.descricao" id="descricao" placeholder="Descrição"/>
             </div>
 
             <div class="form-group">
-                <label for="nome">Data Início</label>
+                <label for="dataInicio">Data Início</label>
                 <input type="text" class="form-control" ng-model="projetoCtrl.projeto.dataInicio" id="dataInicio" placeholder="Data Início"/>
             </div>
 
             <div class="form-group">
-                <label for="nome">Data Fim</label>
+                <label for="dataFim">Data Fim</label>
                 <input type="text" class="form-control" ng-model="projetoCtrl.projeto.dataFim" id="dataFim" placeholder="Data Fim"/>
             </div>
 
             <div class="form-group">
-                <label for="nome">Analistas</label>
-                <div ng-dropdown-multiselect="" translation-texts="projetoCtrl.translate" options="projetoCtrl.analistas" selected-model="projetoCtrl.projeto.analistas" extra-settings="example14settings"></div>
+                <label for="analistas">Analistas</label>
+                <div ng-dropdown-multiselect="" id="analistas" translation-texts="projetoCtrl.translate" options="projetoCtrl.analistas" selected-model="projetoCtrl.projeto.analistas" extra-settings="example14settings"></div>
             </div>
 
             <div ng-show="projetoCtrl.projeto.id == null">
                 <div class="form-group">
-                    <label for="nome">Nome Requisito 1</label>
-                    <input type="text" class="form-control" ng-model="projetoCtrl.projeto.requisitos[0].nome"  placeholder="Nome requisito"/>
+                    <label for="requisito1">Nome Requisito 1</label>
+                    <input type="text" id="requisito1" class="form-control" ng-model="projetoCtrl.projeto.requisitos[0].nome"  placeholder="Nome requisito"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="nome">Descrição Requisito 1</label>
-                    <textarea type="text" class="form-control" ng-model="projetoCtrl.projeto.requisitos[0].descricao" placeholder="Nome requisito">
+                    <label for="descReq1">Descrição Requisito 1</label>
+                    <textarea id="descReq1" type="text" class="form-control" ng-model="projetoCtrl.projeto.requisitos[0].descricao" placeholder="Nome requisito">
                     </textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="nome">Nome Requisito 2</label>
-                    <input type="text" class="form-control" ng-model="projetoCtrl.projeto.requisitos[1].nome"  placeholder="Descrição requisito"/>
+                    <label for="requisito2">Nome Requisito 2</label>
+                    <input type="text" id="requisito2"  class="form-control" ng-model="projetoCtrl.projeto.requisitos[1].nome"  placeholder="Descrição requisito"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="nome">Descrição Requisito 1</label>
-                    <textarea type="text" class="form-control" ng-model="projetoCtrl.projeto.requisitos[1].descricao" placeholder="Descrição requisito">
+                    <label for="descReq2">Descrição Requisito 2</label>
+                    <textarea type="text" id="descReq2" class="form-control" ng-model="projetoCtrl.projeto.requisitos[1].descricao" placeholder="Descrição requisito">
                     </textarea>
                 </div>
             </div>

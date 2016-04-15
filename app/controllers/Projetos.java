@@ -1,13 +1,13 @@
 package controllers;
 
 import com.google.gson.GsonBuilder;
-import flexjson.JSON;
 import models.Projeto;
 import models.Requisito;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang.SystemUtils;
 import play.mvc.Controller;
-import util.*;
+import util.DateDeserializer;
+import util.ObjetoRetorno;
+import util.SerializeUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,10 +20,6 @@ import java.util.List;
  * Created by alexcosta on 4/7/16.
  */
 public class Projetos extends Controller {
-
-    public static void index(){
-        render();
-    }
 
     public static void listar() throws NoSuchFieldException, ClassNotFoundException {
         List<Projeto> projetoList = Projeto.findAll();
@@ -78,6 +74,7 @@ public class Projetos extends Controller {
         projetoVO.dataInicio = projeto.dataInicio;
         projetoVO.dataFim = projeto.dataFim;
         projetoVO.descricao = projeto.descricao;
+        projetoVO.analistas = projeto.analistas;
 
         projetoVO.save();
 

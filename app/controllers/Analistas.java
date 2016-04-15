@@ -15,10 +15,6 @@ import java.util.List;
  */
 public class Analistas extends Controller {
 
-    public static void index(){
-        render();
-    }
-
     public static void listar(){
         List<Analista> analistasList = Analista.findAll();
 

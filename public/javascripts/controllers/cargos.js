@@ -22,6 +22,8 @@ app.controller("CargosController", ["$scope", "CargoFactory", "toaster",
         me.isIncluir = false;
         me.isListar = true;
 
+        me.loginLoading = false;
+
         me.adicionarCargo = function(){
             me.isIncluir = true;
             me.isListar = false;
@@ -49,6 +51,7 @@ app.controller("CargosController", ["$scope", "CargoFactory", "toaster",
         };
 
         me.salvar = function(){
+            me.loginLoading = true;
 
             if(me.cargo.id == null) {
                 CargoFactory.save(me.cargo).$promise.then(function (data) {
@@ -68,6 +71,7 @@ app.controller("CargosController", ["$scope", "CargoFactory", "toaster",
             me.isListar = true;
             me.carregarCargos();
             me.cargo = {};
+            me.loginLoading = false;
         };
 
         me.excluir = function(cargo){

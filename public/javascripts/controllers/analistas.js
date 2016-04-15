@@ -27,6 +27,8 @@
         function($scope, AnalistaFactory, toaster, $resource) {
             var me = this;
 
+            me.loginLoading = false;
+
             me.analista = {};
             me.isIncluir = false;
             me.isListar = true;
@@ -71,6 +73,7 @@
             };
 
             me.salvar = function(){
+                me.loginLoading = true;
 
                 if(me.analista.id == null) {
                     AnalistaFactory.save(me.analista).$promise.then(function (data) {
@@ -90,6 +93,8 @@
                 me.isListar = true;
                 me.carregar();
                 me.analista = {};
+                me.loginLoading = false;
+
             };
 
             me.excluir = function(analista){
