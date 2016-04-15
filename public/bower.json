@@ -1,0 +1,7 @@
+{
+  "name": "G Play Angular",
+  "dependencies": {
+    "angular-ui-router": "^0.2.18",
+    "angular-ladda": "^0.3.4"
+  }
+}

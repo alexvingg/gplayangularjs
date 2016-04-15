@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/bower_components/bootstrap/dist/css/bootstrap.min.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/bower_components/AngularJS-Toaster/toaster.min.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/bower_components/ladda/dist/ladda-themeless.min.css'}">
+
+
+    #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+
+        <script src="@{'/public/bower_components/jquery/dist/jquery.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bower_components/bootstrap/dist/js/bootstrap.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bower_components/angular/angular.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bower_components/angular-resource/angular-resource.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bower_components/angular-animate/angular-animate.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bower_components/AngularJS-Toaster/toaster.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bower_components/angular-auto-validate/dist/jcs-auto-validate.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bower_components/lodash/dist/lodash.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bower_components/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bower_components/angular-ui-router/release/angular-ui-router.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/controllers/app.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/controllers/cargos.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/controllers/analistas.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/controllers/projetos.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+        <script src="@{'/public/bower_components/ladda/dist/spin.min.js'}"></script>
+        <script src="@{'/public/bower_components/ladda/dist/ladda.min.js'}"></script>
+        <script src="@{'/public/bower_components/angular-ladda/dist/angular-ladda.min.js'}"></script>
+
+    </head>
+    <body ng-app="gplay">
+
+        #{include 'navbar.html'/}
+
+        <toaster-container toaster-options="{'close-button': true}"></toaster-container>
+
+        <div ui-view class="container">
+        </div>
+
+        #{get 'moreScripts' /}
+    </body>
+</html>

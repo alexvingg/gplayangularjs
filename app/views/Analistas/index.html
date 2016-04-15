@@ -1,0 +1,88 @@
+#{extends 'main.html' /}
+
+#{set title:'Analistas' /}
+
+<script src="@{'/public/javascripts/controllers/analistas.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<div class="panel panel-default"  ng-controller="AnalistasController as analistaCtrl">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+
+        <h3 class="panel-title pull-left">
+            Analistas
+        </h3>
+
+            <a href="#" ng-click="analistaCtrl.voltar();" class="btn btn-default pull-right" ng-show="analistaCtrl.isIncluir">
+                <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+            </a>
+
+            <a href="#" ng-click="analistaCtrl.adicionar();" ng-show="analistaCtrl.isListar" class="btn btn-default pull-right">
+                <span class="glyphicon glyphicon-plus"></span> Novo
+            </a>
+
+
+        <div class="clearfix"></div>
+
+    </div>
+
+    <div class="panel-body" ng-show="analistaCtrl.isListar">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Especialidade</th>
+                <th>Cargo</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="analista in analistaCtrl.listaAnalistas">
+                <td>{{analista.id}}</td>
+                <td>{{analista.nome}}</td>
+                <td>{{analista.especialidade}}</td>
+                <td>{{analista.cargo.nome}}</td>
+                <td>
+
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a class="btn btn-danger" href="#" ng-click="analistaCtrl.editar(analista)" role="button">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a class="btn btn-danger" href="#" ng-click="analistaCtrl.excluir(analista)" role="button">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="panel-body" ng-show="analistaCtrl.isIncluir">
+        <form role="form" ng-submit="analistaCtrl.salvar()">
+            <input type="hidden" class="form-control" ng-model="analistaCtrl.analista.id" id="id">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" ng-minlength="2" required class="form-control" ng-model="analistaCtrl.analista.nome" id="nome" placeholder="Nome">
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Especialidade</label>
+                <input type="text" class="form-control" ng-model="analistaCtrl.analista.especialidade" id="nome" placeholder="Especialidade">
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Cargo</label>
+                <select ng-model="analistaCtrl.analista.cargo" class="form-control" ng-options="cargo.nome for cargo in analistaCtrl.cargos track by cargo.id">
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-default">Salvar</button>
+        </form>
+    </div>
+
+</div>

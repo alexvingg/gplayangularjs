@@ -1,0 +1,68 @@
+
+<div class="panel panel-default"  ng-controller="CargosController as cargoCtrl">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+
+        <h3 class="panel-title pull-left">
+            Cargos
+        </h3>
+
+        <a ng-click="cargoCtrl.voltar();" class="btn btn-default pull-right" ng-show="cargoCtrl.isIncluir">
+            <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+        </a>
+
+        <a ng-click="cargoCtrl.adicionarCargo();" ng-show="cargoCtrl.isListar" class="btn btn-default pull-right">
+            <span class="glyphicon glyphicon-plus"></span> Novo
+        </a>
+
+
+        <div class="clearfix"></div>
+
+    </div>
+
+
+    <div class="panel-body" ng-show="cargoCtrl.isListar">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="cargo in cargoCtrl.cargos">
+                <td>{{cargo.id}}</td>
+                <td>{{cargo.nome}}</td>
+                <td>
+
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a class="btn btn-danger" ng-click="cargoCtrl.editarCargo(cargo)" role="button">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a class="btn btn-danger" ng-click="cargoCtrl.excluir(cargo)" role="button">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="panel-body" ng-show="cargoCtrl.isIncluir">
+        <form role="form" ng-submit="cargoCtrl.salvar()">
+            <input type="hidden" class="form-control" ng-model="cargoCtrl.cargo.id" id="id">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" ng-model="cargoCtrl.cargo.nome" id="nome" placeholder="Nome">
+            </div>
+            <button type="submit" class="btn btn-default">Salvar</button>
+        </form>
+    </div>
+
+</div>

@@ -1,0 +1,37 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+#GET     /                                       Application.index
+
+GET     /                                       Cargos.index
+GET     /cargos/                                Cargos.listar
+GET     /cargos/{id}/                           Cargos.listar
+POST    /cargos/                                Cargos.save
+PUT     /cargos/{id}/                           Cargos.edit
+DELETE  /cargos/{id}/                           Cargos.delete
+
+GET     /analistas                                 Analistas.index
+GET     /analistas/                                Analistas.listar
+GET     /analistas/{id}/                           Analistas.listar
+POST    /analistas/                                Analistas.save
+PUT     /analistas/{id}/                           Analistas.edit
+DELETE  /analistas/{id}/                           Analistas.delete
+
+GET     /projetos                                 Projetos.index
+GET     /projetos/                                Projetos.listar
+GET     /projetos/{id}/                           Projetos.listar
+POST    /projetos/                                Projetos.save
+PUT     /projetos/{id}/                           Projetos.edit
+DELETE  /projetos/{id}/                           Projetos.delete
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

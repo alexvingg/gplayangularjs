@@ -1,0 +1,129 @@
+#{extends 'main.html' /}
+
+#{set title:'Analistas' /}
+
+<script src="@{'/public/javascripts/controllers/projetos.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+*{<script src="@{'/public/javascripts/util/pdfdownload.js'}" type="text/javascript" charset="${_response_encoding}"></script>}*
+
+<div class="panel panel-default"  ng-controller="ProjetosController as projetoCtrl">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+
+        <h3 class="panel-title pull-left">
+            Projetos
+        </h3>
+
+            <a href="#" ng-click="projetoCtrl.voltar();" class="btn btn-default pull-right" ng-show="projetoCtrl.isIncluir">
+                <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+            </a>
+
+            <a href="#" ng-click="projetoCtrl.adicionar();" ng-show="projetoCtrl.isListar" class="btn btn-default pull-right">
+                <span class="glyphicon glyphicon-plus"></span> Novo
+            </a>
+
+
+        <div class="clearfix"></div>
+
+    </div>
+
+    <div class="panel-body" ng-show="projetoCtrl.isListar">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Data Início</th>
+                <th>Data Fim</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="projeto in projetoCtrl.listaProjetos">
+                <td>{{projeto.id}}</td>
+                <td>{{projeto.nome}}</td>
+                <td>{{projeto.descricao}}</td>
+                <td>{{projeto.dataInicio | date:'dd/MM/yyyy' }}</td>
+                <td>{{projeto.dataFim | date:'dd'}}</td>
+                <td>
+
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a class="btn btn-danger" href="#" ng-click="projetoCtrl.editar(projeto)" role="button">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a class="btn btn-danger" href="#" ng-click="projetoCtrl.excluir(projeto)" role="button">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="panel-body" ng-show="projetoCtrl.isIncluir">
+        <form role="form" ng-submit="projetoCtrl.salvar()">
+            <input type="hidden" class="form-control" ng-model="projetoCtrl.projeto.id" id="id"/>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" ng-minlength="2" required class="form-control" ng-model="projetoCtrl.projeto.nome" id="nome" placeholder="Nome"/>
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Descrição</label>
+                <input type="text" class="form-control" ng-model="projetoCtrl.projeto.descricao" id="descricao" placeholder="Descrição"/>
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Data Início</label>
+                <input type="text" class="form-control" ng-model="projetoCtrl.projeto.dataInicio" id="dataInicio" placeholder="Data Início"/>
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Data Fim</label>
+                <input type="text" class="form-control" ng-model="projetoCtrl.projeto.dataFim" id="dataFim" placeholder="Data Fim"/>
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Analistas</label>
+                <div ng-dropdown-multiselect="" options="projetoCtrl.analistas" selected-model="projetoCtrl.projeto.analistas" extra-settings="example14settings"></div>
+            </div>
+
+            <div ng-show="projetoCtrl.projeto.id == null">
+                <div class="form-group">
+                    <label for="nome">Nome Requisito 1</label>
+                    <input type="text" class="form-control" ng-model="projetoCtrl.projeto.requisitos[0].nome"  placeholder="Nome requisito"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="nome">Descrição Requisito 1</label>
+                    <textarea type="text" class="form-control" ng-model="projetoCtrl.projeto.requisitos[0].descricao" placeholder="Nome requisito">
+                    </textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="nome">Nome Requisito 2</label>
+                    <input type="text" class="form-control" ng-model="projetoCtrl.projeto.requisitos[1].nome"  placeholder="Descrição requisito"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="nome">Descrição Requisito 1</label>
+                    <textarea type="text" class="form-control" ng-model="projetoCtrl.projeto.requisitos[1].descricao" placeholder="Descrição requisito">
+                    </textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">Salvar</button>
+        </form>
+
+
+    </div>
+
+</div>
+
+*{<pdf-download url="http://localhost:9000/projetos/download" filename="teste.pdf"></pdf-download>}*
+
+
